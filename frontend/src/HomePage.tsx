@@ -36,10 +36,12 @@ export const HomePage = () => {
   return (
     <Page>
       <PageTitle>Welcome to cooking with POTS!</PageTitle>
+      <br />
       <PageSubTitle>
-        Crock Pots are the best way to cook without standing for long periods of
-        time by a stove. Browse our recipes to help you feed your family or add
-        your own to help others!{' '}
+        Slow cookers are the best way to cook without standing for long periods
+        of time by a stove. Anyone with POTS (postural orthostatic tachycardia
+        syndrome) knows this is the hardest part of cooking. Browse our recipes
+        to help you feed your family or add your own to help others!{' '}
       </PageSubTitle>
       <PrimaryButton onClick={handleAddRecipeClick}>Add a recipe</PrimaryButton>
       <br /> <br /> <br />
