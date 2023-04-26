@@ -5,11 +5,33 @@ import { Page } from './Page';
 import { FieldLabel, PageSubTitle, PageTitle, PrimaryButton } from './Styles';
 import { Recipe } from './Recipe';
 import { getRecipe, getRecipeNow } from './RecipeDataPostParse';
+import { useSelector } from 'react-redux';
+import {
+  AppState,
+  gettingRecipeOfTheDayAction,
+  gotRecipeOfTheDayAction,
+} from './Store';
+import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {
   const handleAddRecipeClick = () => {
     // navigate('add');
   };
+  const dispatch = useDispatch();
+
+  const recipeOfTheDay = useSelector(
+    (state: AppState) => state.recipes.recipeOfTheDay,
+  );
+  const recipeLoading = useSelector((state: AppState) => state.recipes.loading);
+
+  React.useEffect(() => {
+    const doGetRecipe = async () => {
+      dispatch(gettingRecipeOfTheDayAction());
+      const rotd = await getRecipe(1);
+      dispatch(gotRecipeOfTheDayAction(rotd));
+    };
+    doGetRecipe();
+  }, []);
 
   return (
     <Page>
@@ -30,7 +52,12 @@ export const HomePage = () => {
       >
         <FieldLabel>Recipe of the day:</FieldLabel>
       </div>
-      <Recipe data={getRecipeNow(1)} />
+      {recipeLoading && <div>Loading...</div>}
+      {recipeOfTheDay !== null && (
+        <React.Fragment>
+          <Recipe data={recipeOfTheDay} />
+        </React.Fragment>
+      )}
     </Page>
   );
 };
