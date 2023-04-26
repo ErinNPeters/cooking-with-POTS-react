@@ -1,16 +1,16 @@
 /**@jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import React from 'react';
-import { Page } from './Page';
-import { FieldLabel, PageSubTitle, PageTitle, PrimaryButton } from './Styles';
-import { Recipe } from './Recipe';
-import { getRecipe, getRecipeNow } from './RecipeDataPostParse';
+import { Page } from '../Page';
+import { FieldLabel, PageSubTitle, PageTitle, PrimaryButton } from '../Styles';
+import { Recipe } from '../Recipe';
+import { getRecipe, getRecipeNow } from '../RecipeDataPostParse';
 import { useSelector } from 'react-redux';
 import {
   AppState,
   gettingRecipeOfTheDayAction,
   gotRecipeOfTheDayAction,
-} from './Store';
+} from '../Store';
 import { useDispatch } from 'react-redux';
 
 export const HomePage = () => {

@@ -4,7 +4,7 @@ import { Header } from './Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { NotFoundPage } from './NotFoundPage';
 import { AppFonts } from './Styles';
-import { HomePage } from './HomePage';
+import { HomePage } from './Pages/HomePage';
 import { Provider } from 'react-redux';
 import { configureStore } from './Store';
 
