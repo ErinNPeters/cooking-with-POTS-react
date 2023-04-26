@@ -4,6 +4,7 @@ import { RecipeBox, gray2, gray3 } from './Styles';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { RecipeData } from './RecipeDataPostParse';
+import Fraction from 'fraction.js';
 
 interface Props {
   data: RecipeData;
@@ -43,7 +44,10 @@ export const Recipe = ({ data, showContent = true }: Props) => (
         >
           {data.ingredients.slice(0, 5).map((ingredient) => (
             <div key={ingredient.ingredientId}>
-              {ingredient.amount} {ingredient.unitOfMeasure} {ingredient.name}
+              <React.Fragment>
+                {new Fraction(ingredient.amount).toFraction().toString()}{' '}
+                {ingredient.unitOfMeasure} {ingredient.name}
+              </React.Fragment>
             </div>
           ))}
           ...
