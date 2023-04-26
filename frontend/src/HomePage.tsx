@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 import { Page } from './Page';
-import { PageSubTitle, PageTitle, PrimaryButton } from './Styles';
+import { FieldLabel, PageSubTitle, PageTitle, PrimaryButton } from './Styles';
 
 export const HomePage = () => {
   const handleAddRecipeClick = () => {
@@ -18,6 +18,16 @@ export const HomePage = () => {
         your own to help others!{' '}
       </PageSubTitle>
       <PrimaryButton onClick={handleAddRecipeClick}>Add a recipe</PrimaryButton>
+      <br /> <br /> <br />
+      <hr></hr>
+      <br /> <br />
+      <div
+        css={css`
+          white-space: pre-wrap;
+        `}
+      >
+        <FieldLabel>Recipe of the day:</FieldLabel>
+      </div>
     </Page>
   );
 };
