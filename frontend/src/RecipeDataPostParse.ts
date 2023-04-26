@@ -140,6 +140,11 @@ export const getRecipe = async (
   return results.length === 0 ? null : results[0];
 };
 
+export const getRecipeNow = (recipeId: number): RecipeData => {
+  const results = recipes.filter((r) => r.recipeId === recipeId);
+  return results[0];
+};
+
 export const searchRecipes = async (
   criteria: string,
 ): Promise<RecipeData[]> => {

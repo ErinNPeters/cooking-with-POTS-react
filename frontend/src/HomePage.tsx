@@ -3,6 +3,8 @@ import { css } from '@emotion/react';
 import React from 'react';
 import { Page } from './Page';
 import { FieldLabel, PageSubTitle, PageTitle, PrimaryButton } from './Styles';
+import { Recipe } from './Recipe';
+import { getRecipe, getRecipeNow } from './RecipeDataPostParse';
 
 export const HomePage = () => {
   const handleAddRecipeClick = () => {
@@ -28,6 +30,7 @@ export const HomePage = () => {
       >
         <FieldLabel>Recipe of the day:</FieldLabel>
       </div>
+      <Recipe data={getRecipeNow(1)} />
     </Page>
   );
 };
