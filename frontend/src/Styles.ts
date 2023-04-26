@@ -144,4 +144,5 @@ export const AppFonts = styled.div`
   font-family: ${fontFamily};
   font-size: ${fontSize};
   color: ${gray2};
+  background-color: ${gray6};
 `;
