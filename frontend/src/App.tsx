@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import { Header } from './Header';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { NotFoundPage } from './NotFoundPage';
+import { NotFoundPage } from './Pages/NotFoundPage';
 import { AppFonts } from './Styles';
 import { HomePage } from './Pages/HomePage';
 import { Provider } from 'react-redux';
