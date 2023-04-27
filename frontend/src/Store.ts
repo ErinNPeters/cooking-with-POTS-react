@@ -44,14 +44,14 @@ export const gotRecipeAction = (recipe: RecipeData | null) =>
     recipe: recipe,
   } as const);
 
-export const SEARCHINGRECIPES = 'SearchingQuestions';
+export const SEARCHINGRECIPES = 'SearchingRecipes';
 export const searchingRecipesAction = () =>
   ({
     type: SEARCHINGRECIPES,
   } as const);
 
 export const SEARCHEDRECIPES = 'SearchedRecipes';
-export const searchedQuestionsAction = (recipes: RecipeData[]) =>
+export const searchedRecipesAction = (recipes: RecipeData[]) =>
   ({
     type: SEARCHEDRECIPES,
     recipes,
@@ -67,7 +67,7 @@ type RecipesActions =
   | ReturnType<typeof gettingRecipeAction>
   | ReturnType<typeof gotRecipeAction>
   | ReturnType<typeof searchingRecipesAction>
-  | ReturnType<typeof searchedQuestionsAction>;
+  | ReturnType<typeof searchedRecipesAction>;
 
 const recipesReducer = (state = initialState, action: RecipesActions) => {
   switch (action.type) {
