@@ -121,6 +121,70 @@ const recipes: RecipeData[] = [
     crockPot: true,
     sauceName: 'Smoothered',
   },
+  {
+    recipeId: 2,
+    title: 'Chicken a la King',
+    ingredients: [
+      {
+        recipeId: 2,
+        ingredientId: 1,
+        name: 'boneless, skinless chicken breasts, chopped into bite size pieces',
+        amount: 4,
+        unitOfMeasure: '',
+        sauceIngredient: false,
+      },
+      {
+        recipeId: 2,
+        ingredientId: 2,
+        name: 'Cream of Chicken Soup',
+        amount: 1,
+        unitOfMeasure: 'can',
+        sauceIngredient: true,
+      },
+      {
+        recipeId: 2,
+        ingredientId: 3,
+        name: 'peas',
+        amount: 1,
+        unitOfMeasure: 'can',
+        sauceIngredient: true,
+      },
+      {
+        recipeId: 2,
+        ingredientId: 4,
+        name: 'carrots',
+        amount: 1,
+        unitOfMeasure: 'can',
+        sauceIngredient: true,
+      },
+      {
+        recipeId: 2,
+        ingredientId: 5,
+        name: 'refrigerated buscuits',
+        amount: 1,
+        unitOfMeasure: 'package',
+        sauceIngredient: false,
+      },
+    ],
+    userName: 'Erin',
+    created: new Date(),
+    steps: [
+      {
+        recipeId: 1,
+        stepOrder: 1,
+        content:
+          'Place chicken pieces in slow cooker. Pour soup over chicken. Drain peas and carrots, then add those to slow cooker. Cook for 4 hours.',
+      },
+      {
+        recipeId: 1,
+        stepOrder: 2,
+        content:
+          'Bake biscuits according to package directions. Spoon chicken and vegetable mixture over biscuits and serve.',
+      },
+    ],
+    crockPot: true,
+    sauceName: 'a la King',
+  },
 ];
 
 export const getCrockPotRecipes = async (): Promise<RecipeData[]> => {
