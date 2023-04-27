@@ -17,7 +17,7 @@ export const fontFamily = "'Segoe UI', 'Helvetica Neue',sans-serif";
 export const fontSize = '16px';
 
 export const PrimaryButton = styled.button`
-  margin: 10px 10px 5px 250px;
+  margin: 10px 10px 0px 0px;
   background-color: ${primary2};
   border-color: ${primary2};
   border-style: solid;
@@ -136,7 +136,6 @@ export const PageSubTitle = styled.h4`
   /* font-size: 15px; */
   font-weight: bold;
   margin: 10px 0px 5px;
-  text-align: center;
 `;
 
 export const AppFonts = styled.div`

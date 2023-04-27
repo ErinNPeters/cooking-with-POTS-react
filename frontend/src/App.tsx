@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from './Store';
 import { RecipePage } from './Pages/RecipePage';
 import { SearchResultPage } from './Pages/SearchResultPage';
+import { AddRecipePage } from './Pages/AddRecipePage';
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="" element={<HomePage />} />
             <Route path="recipes/:recipeId" element={<RecipePage />} />
+            <Route path="add" element={<AddRecipePage />} />
             <Route path="search" element={<SearchResultPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>

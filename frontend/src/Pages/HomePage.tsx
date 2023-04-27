@@ -12,10 +12,12 @@ import {
   gotRecipeOfTheDayAction,
 } from '../Store';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const handleAddRecipeClick = () => {
-    // navigate('add');
+    navigate('add');
   };
   const dispatch = useDispatch();
 
@@ -43,6 +45,7 @@ export const HomePage = () => {
         syndrome) knows this is the hardest part of cooking. Browse our recipes
         to help you feed your family or add your own to help others!{' '}
       </PageSubTitle>
+      <br />
       <PrimaryButton onClick={handleAddRecipeClick}>Add a recipe</PrimaryButton>
       <br /> <br /> <br />
       <hr></hr>
