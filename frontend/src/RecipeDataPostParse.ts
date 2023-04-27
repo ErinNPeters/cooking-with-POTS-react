@@ -218,6 +218,9 @@ export const searchRecipes = async (
       r.title.toLowerCase().indexOf(criteria.toLowerCase()) >= 0 ||
       r.ingredients.filter(
         (i) => i.name.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
-      ),
+      ).length > 0 ||
+      r.steps.filter(
+        (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
+      ).length > 0,
   );
 };

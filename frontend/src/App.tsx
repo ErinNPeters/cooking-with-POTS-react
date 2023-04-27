@@ -8,6 +8,7 @@ import { HomePage } from './Pages/HomePage';
 import { Provider } from 'react-redux';
 import { configureStore } from './Store';
 import { RecipePage } from './Pages/RecipePage';
+import { SearchResultPage } from './Pages/SearchResultPage';
 
 const store = configureStore();
 
@@ -20,7 +21,7 @@ function App() {
           <Routes>
             <Route path="" element={<HomePage />} />
             <Route path="recipes/:recipeId" element={<RecipePage />} />
-            {/* <Route path="search" element={<SearchPage />} /> */}
+            <Route path="search" element={<SearchResultPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </AppFonts>
