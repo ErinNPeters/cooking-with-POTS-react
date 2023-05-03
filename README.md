@@ -1,1 +1,1 @@
-# recipes-react
+# cooking-with-POTS
