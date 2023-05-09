@@ -1,191 +1,128 @@
+import { http } from './http';
+
 export interface RecipeData {
   recipeId: number;
   title: string;
-  ingredients: IngredientData[];
+  ingredients: IngredientDto[];
+  userId: string;
   userName: string;
-  created: Date;
-  steps: StepData[];
+  steps: StepDto[];
   crockPot: boolean;
   sauceName?: string;
 }
 
-export interface StepData {
+export interface StepDto {
   recipeId: number;
-  stepOrder: number;
+  stepId: number;
   content: string;
 }
 
-export interface IngredientData {
+export interface IngredientDto {
   recipeId: number;
   ingredientId: number;
-  name: string;
-  amount: number;
-  unitOfMeasure: string;
+  content: string;
   sauceIngredient?: boolean;
+}
+
+export interface RecipeFromServer {
+  recipeId: number;
+  title: string;
+  ingredientDtos: IngredientDto[];
+  userId: string;
+  userName: string;
+  stepDtos: StepDto[];
+  crockPot: boolean;
+  sauceName?: string;
 }
 
 const recipes: RecipeData[] = [
   {
     recipeId: 1,
     title: 'Smothered Pork Chops',
+    userId: '1',
+    userName: 'erin@test.com',
+    sauceName: 'Smothered',
+    crockPot: true,
     ingredients: [
       {
-        recipeId: 1,
         ingredientId: 1,
-        name: 'pork chops',
-        amount: 3,
-        unitOfMeasure: 'lb',
+        recipeId: 1,
+        content: '3 lb bone-in center cut pork chops',
         sauceIngredient: false,
       },
       {
-        recipeId: 1,
         ingredientId: 2,
-        name: 'Creole seasoning',
-        amount: 2,
-        unitOfMeasure: 'tsp',
+        recipeId: 1,
+        content: '2 tsp Creole seasoning',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 3,
-        name: 'Condensed Golden Mushroom Soup',
-        amount: 1,
-        unitOfMeasure: 'can',
+        recipeId: 1,
+        content: '1 can Condensed Golden Mushroom Soup',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 4,
-        name: 'beer',
-        amount: 1 / 2,
-        unitOfMeasure: 'cup',
+        recipeId: 1,
+        content: '½ cup beer',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 5,
-        name: 'flour',
-        amount: 1 / 4,
-        unitOfMeasure: 'cup',
+        recipeId: 1,
+        content: '¼ cup flour',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 6,
-        name: 'Dijon-style mustard',
-        amount: 2,
-        unitOfMeasure: 'tbsp',
+        recipeId: 1,
+        content: '2 tbsp Dijon-style mustard',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 7,
-        name: 'packed brown sugar',
-        amount: 1,
-        unitOfMeasure: 'tbsp',
+        recipeId: 1,
+        content: '1 tbsp packed brown sugar',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 8,
-        name: 'sliced mushrooms',
-        amount: 3,
-        unitOfMeasure: 'cups',
+        recipeId: 1,
+        content: '3 cups sliced mushrooms',
         sauceIngredient: true,
       },
       {
-        recipeId: 1,
         ingredientId: 9,
-        name: 'onion',
-        amount: 1,
-        unitOfMeasure: 'cup',
+        recipeId: 1,
+        content: '1 cup sliced onion',
         sauceIngredient: true,
       },
     ],
-    userName: 'Erin',
-    created: new Date(),
     steps: [
       {
+        stepId: 1,
         recipeId: 1,
-        stepOrder: 1,
         content:
           'Season pork, if desired, then sprinkle with Creole seasoning. Stir soup, beer, flour, mustard, and born sugar in 6 qt slow cooker. Add mushrooms, onion, and pork.',
       },
       {
+        stepId: 2,
         recipeId: 1,
-        stepOrder: 2,
         content:
           'Cover and cook LOW 6 hours or until pork is done. Server over hot cooked rice.',
       },
     ],
-    crockPot: true,
-    sauceName: 'Smoothered',
-  },
-  {
-    recipeId: 2,
-    title: 'Chicken a la King',
-    ingredients: [
-      {
-        recipeId: 2,
-        ingredientId: 1,
-        name: 'boneless, skinless chicken breasts, chopped into bite size pieces',
-        amount: 4,
-        unitOfMeasure: '',
-        sauceIngredient: false,
-      },
-      {
-        recipeId: 2,
-        ingredientId: 2,
-        name: 'Cream of Chicken Soup',
-        amount: 1,
-        unitOfMeasure: 'can',
-        sauceIngredient: true,
-      },
-      {
-        recipeId: 2,
-        ingredientId: 3,
-        name: 'peas',
-        amount: 1,
-        unitOfMeasure: 'can',
-        sauceIngredient: true,
-      },
-      {
-        recipeId: 2,
-        ingredientId: 4,
-        name: 'carrots',
-        amount: 1,
-        unitOfMeasure: 'can',
-        sauceIngredient: true,
-      },
-      {
-        recipeId: 2,
-        ingredientId: 5,
-        name: 'refrigerated buscuits',
-        amount: 1,
-        unitOfMeasure: 'package',
-        sauceIngredient: false,
-      },
-    ],
-    userName: 'Erin',
-    created: new Date(),
-    steps: [
-      {
-        recipeId: 1,
-        stepOrder: 1,
-        content:
-          'Place chicken pieces in slow cooker. Pour soup over chicken. Drain peas and carrots, then add those to slow cooker. Cook for 4 hours.',
-      },
-      {
-        recipeId: 1,
-        stepOrder: 2,
-        content:
-          'Bake biscuits according to package directions. Spoon chicken and vegetable mixture over biscuits and serve.',
-      },
-    ],
-    crockPot: true,
-    sauceName: 'a la King',
   },
 ];
+
+export const mapRecipeFromServer = (recipe: RecipeFromServer): RecipeData => ({
+  ...recipe,
+  ingredients: recipe.ingredientDtos
+    ? recipe.ingredientDtos.map((ingredient) => ({ ...ingredient }))
+    : [],
+  steps: recipe.stepDtos ? recipe.stepDtos.map((step) => ({ ...step })) : [],
+});
 
 export const getCrockPotRecipes = async (): Promise<RecipeData[]> => {
   await wait(500);
@@ -196,12 +133,25 @@ const wait = (ms: number): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
+// export const getRecipe = async (
+//   recipeId: number,
+// ): Promise<RecipeData | null> => {
+//   await wait(500);
+//   const results = recipes.filter((r) => r.recipeId === recipeId);
+//   return results.length === 0 ? null : results[0];
+// };
+
 export const getRecipe = async (
   recipeId: number,
 ): Promise<RecipeData | null> => {
-  await wait(500);
-  const results = recipes.filter((r) => r.recipeId === recipeId);
-  return results.length === 0 ? null : results[0];
+  const result = await http<RecipeFromServer>({
+    path: `RecipeAll/${recipeId}`,
+  });
+  if (result.ok && result.body) {
+    return mapRecipeFromServer(result.body);
+  } else {
+    return null;
+  }
 };
 
 export const getRecipeNow = (recipeId: number): RecipeData => {
@@ -217,7 +167,7 @@ export const searchRecipes = async (
     (r) =>
       r.title.toLowerCase().indexOf(criteria.toLowerCase()) >= 0 ||
       r.ingredients.filter(
-        (i) => i.name.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
+        (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
       ).length > 0 ||
       r.steps.filter(
         (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
