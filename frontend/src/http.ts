@@ -1,7 +1,7 @@
 import { webAPIUrl } from './AppSettings';
 
 export interface HttpRequest<REQB> {
-  body?: any;
+  body?: REQB;
   method?: string;
   path: string;
 }
