@@ -67,20 +67,17 @@ export const RecipePage = () => {
               <PageTitle>{recipe.title}</PageTitle>
               <ul>
                 {recipe.ingredients.map((ingredient) => (
-                  <div key={ingredient.ingredientId}>
-                    {new Fraction(ingredient.amount).toFraction().toString()}{' '}
-                    {ingredient.unitOfMeasure} {ingredient.name}
-                  </div>
+                  <div key={ingredient.ingredientId}>{ingredient.content}</div>
                 ))}
               </ul>
-              <ul>
+              <ol>
                 {recipe.steps.map((step) => (
-                  <div key={step.stepOrder}>
-                    {step.stepOrder}. {step.content} <br />
+                  <div key={step.stepId}>
+                    <li>{step.content} </li>
                     <br />
                   </div>
                 ))}
-              </ul>
+              </ol>
             </p>
             <div
               css={css`
@@ -89,9 +86,7 @@ export const RecipePage = () => {
                 color: ${gray3};
               `}
             >
-              {`Added by ${recipe.userName} on
-  ${recipe.created.toLocaleDateString()} 
-  ${recipe.created.toLocaleTimeString()}`}
+              {`Added by ${recipe.userName}`}
             </div>
           </React.Fragment>
         )}

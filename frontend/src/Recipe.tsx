@@ -43,10 +43,7 @@ export const Recipe = ({ data, showContent = true }: Props) => (
           >
             {data.ingredients.slice(0, 5).map((ingredient) => (
               <div key={ingredient.ingredientId}>
-                <React.Fragment>
-                  {new Fraction(ingredient.amount).toFraction().toString()}{' '}
-                  {ingredient.unitOfMeasure} {ingredient.name}
-                </React.Fragment>
+                <React.Fragment>{ingredient.content}</React.Fragment>
               </div>
             ))}
             ...
@@ -58,9 +55,7 @@ export const Recipe = ({ data, showContent = true }: Props) => (
             font-style: italic;
             color: ${gray3};
           `}
-        >{`Added by ${
-          data.userName
-        } on ${data.created.toLocaleDateString()} ${data.created.toLocaleTimeString()} `}</div>
+        >{`Added by ${data.userName} `}</div>
       </div>
     </RecipeBox>
   </Link>
