@@ -159,18 +159,34 @@ export const getRecipeNow = (recipeId: number): RecipeData => {
   return results[0];
 };
 
+// export const searchRecipes = async (
+//   criteria: string,
+// ): Promise<RecipeData[]> => {
+//   await wait(500);
+//   return recipes.filter(
+//     (r) =>
+//       r.title.toLowerCase().indexOf(criteria.toLowerCase()) >= 0 ||
+//       r.ingredients.filter(
+//         (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
+//       ).length > 0 ||
+//       r.steps.filter(
+//         (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
+//       ).length > 0,
+//   );
+// };
+
 export const searchRecipes = async (
   criteria: string,
 ): Promise<RecipeData[]> => {
-  await wait(500);
-  return recipes.filter(
-    (r) =>
-      r.title.toLowerCase().indexOf(criteria.toLowerCase()) >= 0 ||
-      r.ingredients.filter(
-        (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
-      ).length > 0 ||
-      r.steps.filter(
-        (i) => i.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
-      ).length > 0,
-  );
+  if (!criteria) {
+    criteria = 'ALL';
+  }
+  const result = await http<RecipeFromServer[]>({
+    path: `?search=${criteria}&page=1&pageSize=20`,
+  });
+  if (result.ok && result.body) {
+    return result.body.map(mapRecipeFromServer);
+  } else {
+    return [];
+  }
 };
